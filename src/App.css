@@ -1,0 +1,103 @@
+/* App.css - BOOTSTRAP */
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #eff4fb;
+}
+
+h1 {
+  text-align: center;
+}
+
+.add-task {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.add-task input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.add-task select,
+.add-task button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.task-columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-column {
+  flex: 1;
+  padding: 10px;
+}
+
+.task-column h2 {
+  margin-bottom: 10px;
+}
+
+.tasks {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.task.completed {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.task input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.task button {
+  margin-left: 8px;
+  padding: 6px 10px;
+  background-color: #124e8e;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.total-completed {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.total-completed h2 {
+  margin-bottom: 10px;
+}
+
+.completed-count {
+  margin-top: 5px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.important {
+  color: rgb(2, 58, 170);
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.welcome-image {
+  display: block;
+  margin: 0 auto;
+}
