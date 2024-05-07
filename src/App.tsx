@@ -6,6 +6,8 @@ import TaskColumns from './components/TaskColumns.tsx';
 import TotalCompleted from './components/TotalCompleted.tsx';
 import { Task } from './interfaces/Task.interface';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import store from './redux/store'; // Import magazynu Redux
+import { Provider } from 'react-redux';
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -139,30 +141,31 @@ function App() {
   );
   
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Typography.Title level={1}>To Do List</Typography.Title>
-        <nav>
-          <ul>
-          <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/manage">Manage tasks</Link>
-            </li>
-            <li>
-              <Link to="/completed">Completed</Link>
-            </li>
-          </ul>
-        </nav>
-        <Routes>
-          <Route path="/" element={homeElement} />
-          <Route path="/manage" element={manageElement} />
-          <Route path="/completed" element={<TotalCompleted completedTasks={completedTasks} />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <Provider store={store}> {/* Dodaj Provider i przekaż magazyn Redux */}
+      <BrowserRouter>
+        <div className="App">
+          <Typography.Title level={1}>To Do List</Typography.Title>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/manage">Manage tasks</Link>
+              </li>
+              <li>
+                <Link to="/completed">Completed</Link>
+              </li>
+            </ul>
+          </nav>
+          <Routes>
+            <Route path="/" element={homeElement} />
+            <Route path="/manage" element={manageElement} />
+            <Route path="/completed" element={<TotalCompleted completedTasks={completedTasks} />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
-
 export default App;
