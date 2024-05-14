@@ -1,12 +1,10 @@
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import { Task } from '../interfaces/Task.interface';
 
-// Definicja akcji
 const ADD_TASK = 'ADD_TASK';
 const DELETE_TASK = 'DELETE_TASK';
 const TOGGLE_COMPLETION = 'TOGGLE_COMPLETION';
 
-// Definicja akcji
 interface AddTaskAction {
   type: typeof ADD_TASK;
   payload: Task;
@@ -14,25 +12,22 @@ interface AddTaskAction {
 
 interface DeleteTaskAction {
   type: typeof DELETE_TASK;
-  payload: number; // id zadania
+  payload: number; 
 }
 
 interface ToggleCompletionAction {
   type: typeof TOGGLE_COMPLETION;
-  payload: number; // id zadania
+  payload: number; 
 }
 
-// Definicja stanu
 export interface TaskState {
   tasks: Task[];
 }
 
-// Stan początkowy
 const initialState: TaskState = {
   tasks: [],
 };
 
-// Reduktor
 const taskReducer = (state = initialState, action: AddTaskAction | DeleteTaskAction | ToggleCompletionAction): TaskState => {
   switch (action.type) {
     case ADD_TASK:
@@ -57,7 +52,9 @@ const taskReducer = (state = initialState, action: AddTaskAction | DeleteTaskAct
   }
 };
 
-// Tworzenie magazynu Redux
-const store = createStore(taskReducer);
+const store = configureStore(
+  {
+    reducer: taskReducer
+  });
 
 export default store;

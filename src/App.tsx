@@ -6,7 +6,7 @@ import TaskColumns from './components/TaskColumns.tsx';
 import TotalCompleted from './components/TotalCompleted.tsx';
 import { Task } from './interfaces/Task.interface';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import store from './redux/store'; // Import magazynu Redux
+import store from './redux/store.tsx'; 
 import { Provider } from 'react-redux';
 
 function App() {
@@ -141,7 +141,7 @@ function App() {
   );
   
   return (
-    <Provider store={store}> {/* Dodaj Provider i przekaż magazyn Redux */}
+    <Provider store={store}> {}
       <BrowserRouter>
         <div className="App">
           <Typography.Title level={1}>To Do List</Typography.Title>
