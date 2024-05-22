@@ -9,6 +9,25 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import store from './redux/store.tsx'; 
 import { Provider } from 'react-redux';
 
+const About = () => (
+  <div>
+    <Typography.Title level={1}>Zadanie na IWAI</Typography.Title>
+    <Typography.Paragraph>
+      Miłego dnia!
+    </Typography.Paragraph>
+  </div>
+);
+
+const NotFound = () => (
+  <div>
+    <Typography.Title level={1}>404 - Page Not Found</Typography.Title>
+    <Typography.Paragraph>
+      Nie zjaleziono takiego adresu 
+    </Typography.Paragraph>
+    <Link to="/">Strona startowa</Link>
+  </div>
+);
+
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [category, setCategory] = useState<string>('Dzienne');
@@ -139,9 +158,9 @@ function App() {
       />
     </>
   );
-  
+
   return (
-    <Provider store={store}> {}
+    <Provider store={store}>
       <BrowserRouter>
         <div className="App">
           <Typography.Title level={1}>To Do List</Typography.Title>
@@ -156,16 +175,22 @@ function App() {
               <li>
                 <Link to="/completed">Completed</Link>
               </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
             </ul>
           </nav>
           <Routes>
             <Route path="/" element={homeElement} />
             <Route path="/manage" element={manageElement} />
             <Route path="/completed" element={<TotalCompleted completedTasks={completedTasks} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </BrowserRouter>
     </Provider>
   );
 }
+
 export default App;
